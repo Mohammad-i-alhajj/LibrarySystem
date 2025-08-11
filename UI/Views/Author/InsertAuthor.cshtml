@@ -1,0 +1,55 @@
+﻿@using LibrarySystem.Domains.Dtos
+@using LibrarySystem.Domains.Enums
+@{
+    ViewData["Title"] = "Insert New Author";
+}
+@model ResponseDto;
+
+<form asp-controller="Author" asp-action="AddAuthorData" method="post">
+
+    @if (Model.OpStatus == OpStatus.successfully)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (Model.OpStatus == OpStatus.Failed)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (Model.OpStatus == OpStatus.AlreadyExists)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Full name" id="fullName" name="fullName" required>
+        </div>
+        <div class="col">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" required>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control mt-2" id="address" name="address" required rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary mt-3 w-100">Add Author</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,74 @@
+﻿@using LibrarySystem.Domains.Dtos
+@using LibrarySystem.Domains.Enums
+@{
+    ViewData["Title"] = "Insert a new book";
+}
+@model ResponseDto;
+
+<form asp-controller="Book" asp-action="InsertBookData" method="post">
+
+    @if (Model.OpStatus == OpStatus.successfully)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (Model.OpStatus == OpStatus.Failed)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @Model.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+
+    <div class="form-group">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="title">Book Title:</label>
+                <input type="text" class="form-control" name="title" id="title" required placeholder="Book Title" />
+            </div>
+
+            <div class="col">
+                <label for="ISBN">ISBN:</label>
+                <input type="text" class="form-control" name="ISBN" id="ISBN" required placeholder="ISBN" />
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="description">Book Description:</label>
+            <textarea class="form-control" id="description" name="description" required rows="3"></textarea>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="authorId">Author ID:</label>
+                <input type="number" class="form-control" name="authorId" id="authorId" min="0" required placeholder="Author ID" />
+            </div>
+
+            <div class="col">
+                <label for="language">Book Langauge:</label>
+                <select class="form-control" id="language" name="language" required>
+                    <option>AR</option>
+                    <option>EN</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="numberOfPages">Number Of Pages:</label>
+                <input type="number" class="form-control" name="numberOfPages" id="numberOfPages" min="0" required placeholder="Number Of Pages" />
+            </div>
+            <div class="col">
+                <label for="Category">Category:</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option>Since</option>
+                    <option>Math</option>
+                    <option>English</option>
+                    <option>History</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" name="submit" id="submit">Insert Book</button>
+    </div>
+
+</form>

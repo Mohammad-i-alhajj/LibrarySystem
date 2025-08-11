@@ -1,0 +1,68 @@
+﻿@using LibrarySystem.Domains.Dtos
+@using LibrarySystem.Domains.Entities
+@using LibrarySystem.Domains.Enums
+@{
+    ViewData["Title"] = "Manage All Authors";
+}
+@model UpdateAuthorResponseDto;
+
+<form asp-controller="Author" asp-action="UpdateAuthorData" method="post">
+
+    @if (Model.AuthorResponse?.OpStatus == OpStatus.successfully)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @Model.AuthorResponse.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (Model.AuthorResponse?.OpStatus == OpStatus.Failed)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @Model.AuthorResponse.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else if (Model.AuthorResponse?.OpStatus == OpStatus.AlreadyExists)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            @Model.AuthorResponse.Message
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <input type="hidden" id="id" name="id" value="@Model.Author?.Id" />
+    <div class="row">
+        <div class="col">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" placeholder="Full name" id="fullName" name="fullName" value="@Model.Author?.FullName" required>
+        </div>
+        <div class="col">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" value="@Model.Author?.Email" required>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control mt-2" id="address" name="address" required rows="3">@Model.Author?.Address</textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <select class="custom-select w-100 p-2 mt-2 form-control rounded-3" id="userStatus" name="userStatus" required>
+                <option selected>@Model.Author?.UserStatus</option>
+                <option value="1">Active</option>
+                <option value="2">Inactive</option>
+                <option value="3">Suspended</option>
+                <option value="4">Deleted</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary mt-3 w-100">Update Author Information</button>
+        </div>
+    </div>
+</form>

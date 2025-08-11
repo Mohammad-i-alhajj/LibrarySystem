@@ -1,0 +1,65 @@
+﻿@using LibrarySystem.Domains.Entities
+@{
+    ViewData["Title"] = "Manage all books";
+}
+@model List<Book>;
+
+
+<div class="row">
+    <div class="col">
+        <form asp-controller="Book" asp-action="SearchByBookTitle" method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Search By Book Title" aria-label="Search By Author Name" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table class="table table-hover text-center align-middle">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author Name</th>
+            <th scope="col">Author Id</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Language</th>
+            <th scope="col">Number Of Pages</th>
+            <th scope="col">Is Available</th>
+            <th scope="col">Category</th>
+            <th scope="col">#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Title</td>
+                <td>@book.Description</td>
+                <td>@book.AuthorName</td>
+                <td>@book.AuthorId</td>
+                <td>@book.ISBN</td>
+                <td>@book.Language</td>
+                <td>@book.NumberOfPages</td>
+                <td>@book.IsAvailable</td>
+                <td>@book.Category</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-3 fs-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            &#8942;
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-controller="Book" asp-action="UpdateBookInfo" asp-route-id="@book.Id">Edit</a></li>
+                            <li><a class="dropdown-item" asp-controller="Book" asp-action="LogicalDelete" asp-route-id="@book.Id">Logical Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

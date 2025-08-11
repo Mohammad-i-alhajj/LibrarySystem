@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container my-5">
+    <div class="row g-4">
+        <!-- Card 1: Insert New Author -->
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3">
+                            <i class="bi bi-person-plus fs-1 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">Insert New Author</h5>
+                        <p class="card-text text-muted">
+                            Add a new author to the library database quickly and easily.
+                        </p>
+                    </div>
+                    <a asp-action="InsertAuthor" asp-controller="Author" class="btn btn-primary mt-3">Go</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Manage Authors -->
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3">
+                            <i class="bi bi-people fs-1 text-success"></i>
+                        </div>
+                        <h5 class="card-title">Manage Authors</h5>
+                        <p class="card-text text-muted">
+                            View, edit, and delete authors in the system.
+                        </p>
+                    </div>
+                    <a asp-action="ManageAllAuthors" asp-controller="Author" class="btn btn-success mt-3">Go</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Insert New Book -->
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3">
+                            <i class="bi bi-book fs-1 text-warning"></i>
+                        </div>
+                        <h5 class="card-title">Insert New Book</h5>
+                        <p class="card-text text-muted">
+                            Add new books with all the necessary details.
+                        </p>
+                    </div>
+                    <a asp-action="InsertBook" asp-controller="Book" class="btn btn-warning text-white mt-3">Go</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Manage Books -->
+        <div class="col-12 col-sm-6 col-lg-3">
+            <div class="card h-100 shadow-sm text-center">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="mb-3">
+                            <i class="bi bi-journal-text fs-1 text-danger"></i>
+                        </div>
+                        <h5 class="card-title">Manage Books</h5>
+                        <p class="card-text text-muted">
+                            View, edit, and delete books in the system.
+                        </p>
+                    </div>
+                    <a asp-action="ManageBooks" asp-controller="Book" class="btn btn-danger mt-3">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <div class="row g-4 text-center">
+        <!-- Total Books -->
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="p-4 bg-primary text-white rounded-4 shadow-sm">
+                <i class="bi bi-book fs-1 mb-2"></i>
+                <h3 class="fw-bold mb-3">@ViewBag.TotalBooks</h3>
+                <p class="mb-0">Total Books</p>
+            </div>
+        </div>
+
+        <!-- Total Authors -->
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="p-4 bg-success text-white rounded-4 shadow-sm">
+                <i class="bi bi-people fs-1 mb-2"></i>
+                <h3 class="fw-bold mb-3">@ViewBag.TotalAuthors</h3>
+                <p class="mb-0">Total Authors</p>
+            </div>
+        </div>
+
+        <!-- Latest Book -->
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="p-4 bg-warning text-white rounded-4 shadow-sm">
+                <i class="bi bi-stars fs-1 mb-2"></i>
+                <h5 class="fw-bold mb-4">@ViewBag.LatestBook</h5>
+                <p class="mb-0">Latest Added Book</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

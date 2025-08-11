@@ -1,0 +1,81 @@
+﻿@using LibrarySystem.Domains.Dtos
+@using LibrarySystem.Domains.Entities
+@using LibrarySystem.Domains.Enums
+@{
+    ViewData["Title"] = "Update book information";
+}
+
+@model UpdateBookResponseDto;
+
+@if (Model.BookResponse?.OpStatus == OpStatus.successfully)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @Model.BookResponse.Message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else if (Model.BookResponse?.OpStatus == OpStatus.Failed)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @Model.BookResponse.Message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+else if (Model.BookResponse?.OpStatus == OpStatus.NotFound)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @Model.BookResponse.Message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form asp-controller="Book" asp-action="UpdateBookInfoData" method="post">
+    <div class="form-control">
+        <input type="hidden" name="id" id="id" value="@Model.Book?.Id" />
+        <div class="row mb-3">
+            <div class="col">
+                <label for="title">Book Title:</label>
+                <input type="text" class="form-control" name="title" id="title" required placeholder="Book Title" value="@Model.Book?.Title" />
+            </div>
+            <div class="col">
+                <label for="ISBN">ISBN:</label>
+                <input type="text" class="form-control" name="ISBN" id="ISBN" required placeholder="ISBN" value="@Model.Book?.ISBN" />
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="description">Book Description:</label>
+            <textarea class="form-control" id="description" name="description" required rows="3">@Model.Book?.Description</textarea>
+        </div>
+        <div class="col">
+            <label for="language">Book Langauge:</label>
+            <select class="form-control" id="language" name="language" required>
+                <option>@Model.Book?.Language</option>
+                <option>AR</option>
+                <option>EN</option>
+            </select>
+            <label for="IsAvailable">Is Available:</label>
+            <select class="form-control" id="IsAvailable" name="IsAvailable" required>
+                <option>@Model.Book?.IsAvailable</option>
+                <option>Available</option>
+                <option>Not Available</option>
+            </select>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label for="numberOfPages">Number Of Pages:</label>
+                <input type="number" class="form-control" name="numberOfPages" id="numberOfPages" min="0" required placeholder="Number Of Pages" value="@Model.Book?.NumberOfPages" />
+            </div>
+            <div class="col">
+                <label for="Category">Category:</label>
+                <select class="form-control" id="category" name="category" required>
+                    <option>@Model.Book?.Category</option>
+                    <option>Since</option>
+                    <option>Math</option>
+                    <option>English</option>
+                    <option>History</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary w-100" type="submit" name="submit" id="submit">Update Book</button>
+    </div>
+</form>

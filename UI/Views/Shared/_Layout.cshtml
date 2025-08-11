@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Library System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/UI.styles.css" asp-append-version="true" />
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Library System</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="InsertAuthor">Insert New Author</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="ManageAllAuthors">Manage Authors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="InsertBook">Insert New Book</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="ManageBooks">Manage Books</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <main role="main" class="flex-grow-1 py-4">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="site-footer bg-light text-black pt-0 pb-4 mt-auto">
+        <hr class="btn-outline-secondary pt-1 mt-0"/>
+        <div class="container pt-3">
+            <div class="row gy-4">
+                <!-- Project & About -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-journal-bookmark fs-2 me-2"></i>
+                        <h5 class="text-black mb-0 fw-semibold">Library Management System</h5>
+                    </div>
+                    <p class="text-black-50 mb-3">
+                        Simple, fast, and reliable tools to manage authors and books with a clean, responsive interface.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <h6 class="text-uppercase text-black mb-3">Quick Links</h6>
+                    <div class="d-flex gap-4">
+                        <ul class="list-unstyled small mb-0">
+                            <li class="mb-2"><a class="text-black-50 text-decoration-none" asp-action="Index" asp-controller="Home">Home</a></li>
+                            <li class="mb-2"><a class="text-black-50 text-decoration-none" asp-action="InsertAuthor" asp-controller="Author">Insert New Author</a></li>
+                            <li class="mb-2"><a class="text-black-50 text-decoration-none" asp-action="ManageAllAuthors" asp-controller="Author">Manage Authors</a></li>
+                        </ul>
+                        <ul class="list-unstyled small mb-0">
+
+                            <li class="mb-2"><a class="text-black-50 text-decoration-none" asp-action="InsertBook" asp-controller="Book">Insert New Book</a></li>
+                            <li class="mb-2"><a class="text-black-50 text-decoration-none" asp-action="ManageBooks" asp-controller="Book">Manage Books</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-12 col-lg-4">
+                    <h6 class="text-uppercase text-black mb-3">Contact</h6>
+                    <ul class="list-unstyled small mb-0">
+                        
+                        <li class="mb-2"><a class="text-black-50 text-decoration-none" href="mailto: mo7ammad.i.alhajj@gmail.com" target="_blank">Email</a></li>
+                        <li class="mb-2"><a class="text-black-50 text-decoration-none" href="https://www.linkedin.com/in/mohammad-i-alhaj/" target="_blank">Linkedin</a></li>
+                        <li class="mb-2"><a class="text-black-50 text-decoration-none" href="https://github.com/Mohammad-i-alhajj" target="_blank">GitHub</a></li>
+                        
+                        <li class="mb-2 text-black-50">+962 79 648 1329</li>
+                        <li class="mb-2 text-black-50">Amman, Jordan</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary-subtle my-4">
+
+            <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between pb-4">
+                <p class="small text-black-50 mb-2 mb-sm-0">
+                    &copy; @DateTime.Now.Year Library Management System. All rights reserved.
+                </p>
+                <a href="#" class="small text-black-50 text-decoration-none d-inline-flex align-items-center">
+                    <i class="bi bi-arrow-up-short fs-4 me-1"></i> Back to top
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
