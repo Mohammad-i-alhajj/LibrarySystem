@@ -32,13 +32,16 @@ Follow these steps to run the project locally:
     git clone https://github.com/Mohammad-i-alhajj/LibrarySystem/
 
 3. **Open the solution**
-    Open LibrarySystem.sln in Visual Studio.
+    ```bash
+    LibrarySystem.sln
 
-4. **Apply database migrations**
+5. **Apply database migrations**
     In Package Manager Console (Default project = Infrastructure):
+   ```bash
     Update-Database
 
-5. **Run the project**
+6. **Run the project**
+    ```bash
     Press F5 or click the green Run button in Visual Studio.
 
 ---
