@@ -55,8 +55,3 @@ Follow these steps to run the project locally:
 
    You can change this in UI/appsettings.json if you want to use a different SQL Server.
 
----
-
-## License
-   This project is open-source and free to use for learning purposes.
-
