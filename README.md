@@ -28,16 +28,17 @@ It provides basic CRUD operations for both entities, follows a layered architect
 Follow these steps to run the project locally:
 
 1. **Clone the repository**
+    ```bash
     git clone https://github.com/Mohammad-i-alhajj/LibrarySystem/
 
-2. **Open the solution**
+3. **Open the solution**
     Open LibrarySystem.sln in Visual Studio.
 
-3. **Apply database migrations**
+4. **Apply database migrations**
     In Package Manager Console (Default project = Infrastructure):
     Update-Database
 
-4. **Run the project**
+5. **Run the project**
     Press F5 or click the green Run button in Visual Studio.
 
 ---
